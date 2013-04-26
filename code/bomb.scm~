@@ -1,0 +1,16 @@
+(define bomb%
+  (class object%
+    (init-field (timer 0.0))
+    (init-field (bomb-pos  (cons 0 0)))
+    (init-field (flame-l '()))
+    (super-new)
+    (define/public (get-timer-value) timer)
+    (define/public (get-bomb-pos) bomb-pos)
+    (define/public (get-flame-l) flame-l)
+    (define/public (set-timer-value val)
+      (set! timer val))
+    (define/public (update-timer) (set! timer (- timer 0.2)))
+    (define/public (set-flame-l l)
+      (set! flame-l l))
+    (define/public (set-bomb-pos p)
+      (set! bomb-pos p))))

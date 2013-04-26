@@ -1,0 +1,25 @@
+(require graphics/graphics)
+(define (credits)
+  (begin
+    (open-graphics)
+    (define window (open-pixmap "Bomberman"
+                                1150
+                                650))
+    ((draw-pixmap window) "Images/credits.jpg"
+                          (make-posn 0 0)
+                          (make-rgb 0 0 0))
+    (copy-viewport window window1))
+  (define (mouse-click)
+    (define p (make-posn 0 0))
+    (set! p (mouse-click-posn (get-mouse-click window1)))
+    (let ([x (posn-x p)] [y (posn-y p)])
+      (cond [(and (<= x 638) (>= x 394) (<= y 647) (>= y 555)) 
+             (let ([f (λ()
+                        (main)
+                        (close-viewport window1))])
+               (f))]
+            [else (mouse-click)])))
+  (mouse-click))
+
+
+
